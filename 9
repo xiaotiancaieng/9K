@@ -1,0 +1,230 @@
+local WindUI = loadstring(game:HttpGet("https://github.com/Footagesus/WindUI/releases/latest/download/main.lua"))()
+
+local Window = WindUI:CreateWindow({
+    Title = "9K<font color='#00FF00'>0.1</font>",
+    Icon = "rbxassetid://1279310654146347060",
+    IconTransparency = 0.5,
+    IconThemed = true,
+    Author = "作者:9K",
+    Folder = "9KHub",
+    Size = UDim2.fromOffset(500, 450),
+    Transparent = true,
+    Theme = "Dark",
+    User = {
+        Enabled = true,
+        Callback = function() 
+            gg.alert("9K脚本 v0.1\n开发者: 9K\nQQ: 3876527033\n师傅：越HB")
+        end,
+        Anonymous = false
+    },
+    SideBarWidth = 200,
+    ScrollBarEnabled = true,
+    Background = "rbxassetid://96291371536118"
+})
+
+Window:EditOpenButton({
+    Title = "9K脚本",
+    Icon = "monitor",
+    CornerRadius = UDim.new(0,16),
+    StrokeThickness = 4,
+    Color = ColorSequence.new({
+        ColorSequenceKeypoint.new(0, Color3.fromHex("FF0000")),
+        ColorSequenceKeypoint.new(0.16, Color3.fromHex("FF7F00")),
+        ColorSequenceKeypoint.new(0.33, Color3.fromHex("FFFF00")),
+        ColorSequenceKeypoint.new(0.5, Color3.fromHex("00FF00")),
+        ColorSequenceKeypoint.new(0.66, Color3.fromHex("0000FF")),
+        ColorSequenceKeypoint.new(0.83, Color3.fromHex("4B0082")),
+        ColorSequenceKeypoint.new(1, Color3.fromHex("9400D3"))
+    }),
+    Draggable = true,
+})
+
+Window:Tag({
+    Title = "v0.1 9K",
+    Color = Color3.fromHex("#30ff6a")
+})
+
+Window:Tag({
+    Title = "9K官方",
+    Color = Color3.fromHex("#315dff")
+})
+
+local TimeTag = Window:Tag({
+    Title = "正在更新 师傅：越HB  模板来自越HB",
+    Color = Color3.fromHex("#ff3030")
+})
+
+local MainTab = Window:CreateTab({
+    Title = "主要功能",
+    Icon = "home"
+})
+
+local PlayerTab = Window:CreateTab({
+    Title = "玩家选项", 
+    Icon = "users"
+})
+
+local GameTab = Window:CreateTab({
+    Title = "游戏功能",
+    Icon = "gamepad"
+})
+
+local SettingsTab = Window:CreateTab({
+    Title = "设置",
+    Icon = "settings"
+})
+
+local MainSection = MainTab:CreateSection({
+    Title = "基础功能",
+    Side = "Left"
+})
+
+MainSection:Button({
+    Title = "无限跳跃",
+    Description = "启用无限跳跃功能",
+    Icon = "activity",
+    Callback = function()
+        gg.alert("无限跳跃功能已激活!")
+    end
+})
+
+MainSection:Button({
+    Title = "速度提升", 
+    Description = "提升移动速度",
+    Icon = "zap",
+    Callback = function()
+        gg.alert("速度提升已激活!")
+    end
+})
+
+MainSection:Button({
+    Title = "穿墙模式",
+    Description = "启用穿墙功能",
+    Icon = "eye-off",
+    Callback = function()
+        gg.alert("穿墙模式已激活!")
+    end
+})
+
+MainSection:Button({
+    Title = "飞行模式",
+    Description = "启用飞行功能", 
+    Icon = "wind",
+    Callback = function()
+        gg.alert("飞行模式已激活!")
+    end
+})
+
+local RightSection = MainTab:CreateSection({
+    Title = "高级功能",
+    Side = "Right"
+})
+
+RightSection:Toggle({
+    Title = "自动收集",
+    Description = "自动收集附近物品",
+    Icon = "package",
+    Default = false,
+    Callback = function(Value)
+        if Value then
+            gg.alert("自动收集已开启!")
+        else
+            gg.alert("自动收集已关闭!")
+        end
+    end
+})
+
+RightSection:Toggle({
+    Title = "无敌模式",
+    Description = "启用无敌状态",
+    Icon = "shield",
+    Default = false, 
+    Callback = function(Value)
+        if Value then
+            gg.alert("无敌模式已开启!")
+        else
+            gg.alert("无敌模式已关闭!")
+        end
+    end
+})
+
+RightSection:Dropdown({
+    Title = "选择武器",
+    Description = "选择要使用的武器",
+    Icon = "sword",
+    Items = {"剑", "枪", "弓箭", "法杖", "拳头"},
+    Default = "拳头",
+    Callback = function(Value)
+        gg.alert("已选择武器: " .. Value)
+    end
+})
+
+local PlayerSection = PlayerTab:CreateSection({
+    Title = "玩家管理",
+    Side = "Left"
+})
+
+local players = game:GetService("Players"):GetPlayers()
+local playerNames = {"自己"}
+for _, player in ipairs(players) do
+    if player ~= game.Players.LocalPlayer then
+        table.insert(playerNames, player.Name)
+    end
+end
+
+PlayerSection:Dropdown({
+    Title = "选择玩家",
+    Description = "选择目标玩家",
+    Icon = "user",
+    Items = playerNames,
+    Default = "自己",
+    Callback = function(Value)
+        gg.alert("已选择玩家: " .. Value)
+    end
+})
+
+PlayerSection:Button({
+    Title = "传送到玩家",
+    Description = "传送到选定玩家位置",
+    Icon = "navigation",
+    Callback = function()
+        gg.alert("传送功能执行中...")
+    end
+})
+
+PlayerSection:Button({
+    Title = "观察玩家",
+    Description = "切换到玩家视角",
+    Icon = "eye",
+    Callback = function()
+        gg.alert("观察模式已激活!")
+    end
+})
+
+local GameSection = GameTab:CreateSection({
+    Title = "游戏功能",
+    Side = "Left"
+})
+
+GameSection:Button({
+    Title = "解锁所有物品",
+    Description = "解锁游戏内所有物品",
+    Icon = "unlock",
+    Callback = function()
+        gg.alert("物品解锁功能执行中...")
+    end
+})
+
+GameSection:Button({
+    Title = "获取游戏通行证",
+    Description = "获取游戏特殊通行证",
+    Icon = "award",
+    Callback = function()
+        gg.alert("通行证获取中...")
+    end
+})
+
+GameSection:Button({
+    Title = "无限货币",
+    Description = "获得无限游戏货币",
+    Icon = "dollar-sign"
