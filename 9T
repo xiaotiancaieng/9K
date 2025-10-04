@@ -1,0 +1,142 @@
+a = gg.prompt({"输入你的卡密"}, {"3kssb"}, {"text"})
+if a == nil then 
+    os.exit() 
+end
+if a[1] == '3kssb' then 
+    gg.alert("尊敬的用户您的卡密正确") 
+else
+    gg.alert("卡密错误请找3876527033获取卡密") 
+    os.exit() 
+end
+
+local Players = game:GetService("Players")
+local UIS = game:GetService("UserInputService")
+local TweenService = game:GetService("TweenService")
+local RunService = game:GetService("RunService")
+local LocalPlayer = Players.LocalPlayer
+
+local function MakeDraggable(topbar, obj)
+    local dragging, dragInput, dragStart, startPos
+    
+    local function Update(input)
+        local delta = input.Position - dragStart
+        obj.Position = UDim2.new(
+            startPos.X.Scale, 
+            startPos.X.Offset + delta.X, 
+            startPos.Y.Scale, 
+            startPos.Y.Offset + delta.Y
+        )
+    end
+    
+    topbar.InputBegan:Connect(function(input)
+        if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+            dragging = true
+            dragStart = input.Position
+            startPos = obj.Position
+            
+            input.Changed:Connect(function()
+                if input.UserInputState == Enum.UserInputState.End then
+                    dragging = false
+                end
+            end)
+        end
+    end)
+    
+    topbar.InputChanged:Connect(function(input)
+        if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+            dragInput = input
+        end
+    end)
+    
+    UIS.InputChanged:Connect(function(input)
+        if input == dragInput and dragging then
+            Update(input)
+        end
+    end
+end
+
+function CreateMainUI()
+    local ScreenGui = Instance.new("ScreenGui")
+    ScreenGui.Name = "9K_UI"
+    ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+    ScreenGui.Parent = game.CoreGui
+
+    local Background = Instance.new("ImageLabel")
+    Background.Name = "Background"
+    Background.Size = UDim2.new(1, 0, 1, 0)
+    Background.Position = UDim2.new(0, 0, 0, 0)
+    Background.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+    Background.BackgroundTransparency = 1
+    Background.Image = "rbxassetid://12130059538"  -- 默认背景图
+    Background.ImageTransparency = 0.8  -- 半透明
+    Background.ScaleType = Enum.ScaleType.Crop
+    Background.Parent = ScreenGui
+
+    local MainFrame = Instance.new("Frame")
+    MainFrame.BackgroundColor3 = Color3.fromRGB(30, 30, 40)
+    MainFrame.BackgroundTransparency = 0.3  -- 半透明效果
+    MainFrame.BorderSizePixel = 0
+    MainFrame.Position = UDim2.new(0.3, 0, 0.2, 0)
+    MainFrame.Size = UDim2.new(0.4, 0, 0.6, 0)
+    MainFrame.Parent = ScreenGui
+    
+    local MainCorner = Instance.new("UICorner")
+    MainCorner.CornerRadius = UDim.new(0, 12)
+    MainCorner.Parent = MainFrame
+    
+    local MainStroke = Instance.new("UIStroke")
+    MainStroke.Color = Color3.fromRGB(100, 100, 200)
+    MainStroke.Thickness = 2
+    MainStroke.Parent = MainFrame
+
+    local TitleBar = Instance.new("Frame")
+    TitleBar.BackgroundColor3 = Color3.fromRGB(40, 40, 50)
+    TitleBar.BackgroundTransparency = 0.2
+    TitleBar.BorderSizePixel = 0
+    TitleBar.Size = UDim2.new(1, 0, 0.08, 0)
+    TitleBar.Parent = MainFrame
+    
+    local TitleCorner = Instance.new("UICorner")
+    TitleCorner.CornerRadius = UDim.new(0, 12)
+    TitleCorner.Parent = TitleBar
+    
+    local TitleLabel = Instance.new("TextLabel")
+    TitleLabel.BackgroundTransparency = 1
+    TitleLabel.Position = UDim2.new(0.02, 0, 0, 0)
+    TitleLabel.Size = UDim2.new(0.6, 0, 1, 0)
+    TitleLabel.Font = Enum.Font.GothamBold
+    TitleLabel.Text = "9K 脚本菜单"
+    TitleLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+    TitleLabel.TextSize = 16
+    TitleLabel.TextXAlignment = Enum.TextXAlignment.Left
+    TitleLabel.Parent = TitleBar
+
+    local CloseButton = Instance.new("TextButton")
+    CloseButton.BackgroundColor3 = Color3.fromRGB(255, 60, 60)
+    CloseButton.Position = UDim2.new(0.92, 0, 0.2, 0)
+    CloseButton.Size = UDim2.new(0.06, 0, 0.6, 0)
+    CloseButton.Font = Enum.Font.GothamBold
+    CloseButton.Text = "X"
+    CloseButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+    CloseButton.TextSize = 14
+    CloseButton.Parent = TitleBar
+    
+    local CloseCorner = Instance.new("UICorner")
+    CloseCorner.CornerRadius = UDim.new(0, 6)
+    CloseCorner.Parent = CloseButton
+    
+    local InfoFrame = Instance.new("Frame")
+    InfoFrame.BackgroundColor3 = Color3.fromRGB(45, 45, 55)
+    InfoFrame.BackgroundTransparency = 0.3
+    InfoFrame.BorderSizePixel = 0
+    InfoFrame.Position = UDim2.new(0, 0, 0.08, 0)
+    InfoFrame.Size = UDim2.new(1, 0, 0.12, 0)
+    InfoFrame.Parent = MainFrame
+    
+    local InfoCorner = Instance.new("UICorner")
+    InfoCorner.CornerRadius = UDim.new(0, 8)
+    InfoCorner.Parent = InfoFrame
+    
+    local InfoStroke = Instance.new("UIStroke")
+    InfoStroke.Color = Color3.fromRGB(80, 80, 100)
+    InfoStroke.Thic
