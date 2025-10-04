@@ -1,0 +1,139 @@
+local Success, Result = pcall(function()
+    local a = gg.prompt({"输入你的卡密"}, {"3kssb"}, {"text"})
+    if a == nil then 
+        os.exit() 
+    end
+    if a[1] == '3kssb' then 
+        gg.alert("尊敬的用户您的卡密正确") 
+    else
+        gg.alert("卡密错误请找3876527033获取卡密") 
+        os.exit() 
+    end
+    
+    local Players = game:GetService("Players")
+    local UIS = game:GetService("UserInputService")
+    local TweenService = game:GetService("TweenService")
+    local LocalPlayer = Players.LocalPlayer
+
+    local function MakeDraggable(topbar, obj)
+        local dragging, dragInput, dragStart, startPos
+        
+        local function Update(input)
+            local delta = input.Position - dragStart
+            obj.Position = UDim2.new(
+                startPos.X.Scale, 
+                startPos.X.Offset + delta.X, 
+                startPos.Y.Scale, 
+                startPos.Y.Offset + delta.Y
+            )
+        end
+        
+        topbar.InputBegan:Connect(function(input)
+            if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+                dragging = true
+                dragStart = input.Position
+                startPos = obj.Position
+                
+                input.Changed:Connect(function()
+                    if input.UserInputState == Enum.UserInputState.End then
+                        dragging = false
+                    end
+                end)
+            end
+        end)
+        
+        topbar.InputChanged:Connect(function(input)
+            if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+                dragInput = input
+            end
+        end)
+        
+        UIS.InputChanged:Connect(function(input)
+            if input == dragInput and dragging then
+                Update(input)
+            end
+        end)
+    end
+
+    function YtPr()
+        local sg = Instance.new("ScreenGui")
+        sg.Name = "YoutubeGui"
+        sg.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+        sg.Parent = game.CoreGui
+
+        local frame = Instance.new("Frame")
+        frame.BackgroundColor3 = Color3.new(0.95, 0.95, 0.95)
+        frame.BorderSizePixel = 0
+        frame.Position = UDim2.new(0.1, 0, 0.4, 0)
+        frame.Size = UDim2.new(0.3, 0, 0.2, 0)
+        frame.Parent = sg
+        
+        local corner = Instance.new("UICorner")
+        corner.CornerRadius = UDim.new(0, 12)
+        corner.Parent = frame
+        
+        local stroke = Instance.new("UIStroke")
+        stroke.Color = Color3.new(0.8, 0.8, 0.8)
+        stroke.Thickness = 2
+        stroke.Parent = frame
+        
+        MakeDraggable(frame, frame)
+
+        local img = Instance.new("ImageLabel")
+        img.BackgroundColor3 = Color3.new(1, 1, 1)
+        img.BorderSizePixel = 0
+        img.Position = UDim2.new(0.05, 0, 0.1, 0)
+        img.Size = UDim2.new(0.25, 0, 0.8, 0)
+        img.Image = "http://www.roblox.com/asset/?id=12130059538"
+        img.ScaleType = Enum.ScaleType.Crop
+        img.Parent = frame
+        
+        local imgCorner = Instance.new("UICorner")
+        imgCorner.CornerRadius = UDim.new(0, 8)
+        imgCorner.Parent = img
+        
+        local imgStroke = Instance.new("UIStroke")
+        imgStroke.Color = Color3.new(1, 0, 0)
+        imgStroke.Thickness = 2
+        imgStroke.Parent = img
+
+        local txt = Instance.new("TextLabel")
+        txt.BackgroundTransparency = 1
+        txt.Position = UDim2.new(0.35, 0, 0.15, 0)
+        txt.Size = UDim2.new(0.6, 0, 0.3, 0)
+        txt.Font = Enum.Font.GothamBold
+        txt.Text = "自制脚本"
+        txt.TextColor3 = Color3.new(0.2, 0.2, 0.2)
+        txt.TextScaled = true
+        txt.TextXAlignment = Enum.TextXAlignment.Left
+        txt.Parent = frame
+
+        local desc = Instance.new("TextLabel")
+        desc.BackgroundTransparency = 1
+        desc.Position = UDim2.new(0.35, 0, 0.4, 0)
+        desc.Size = UDim2.new(0.6, 0, 0.2, 0)
+        desc.Font = Enum.Font.Gotham
+        desc.Text = "点击下方按钮复制链接"
+        desc.TextColor3 = Color3.new(0.5, 0.5, 0.5)
+        desc.TextScaled = true
+        desc.TextXAlignment = Enum.TextXAlignment.Left
+        desc.TextSize = 14
+        desc.Parent = frame
+
+        local btn = Instance.new("TextButton")
+        btn.BackgroundColor3 = Color3.new(1, 0, 0)
+        btn.Position = UDim2.new(0.35, 0, 0.65, 0)
+        btn.Size = UDim2.new(0.6, 0, 0.25, 0)
+        btn.Font = Enum.Font.GothamBold
+        btn.Text = "复制B站链接"
+        btn.TextColor3 = Color3.new(1, 1, 1)
+        btn.TextScaled = true
+        btn.Parent = frame
+        
+        local btnCorner = Instance.new("UICorner")
+        btnCorner.CornerRadius = UDim.new(0, 6)
+        btnCorner.Parent = btn
+        
+        btn.MouseEnter:Connect(function()
+            local tween = TweenService:Create(btn, TweenInfo.new(0.2), {BackgroundColor3 = Color3.new(0.9, 0, 0)})
+            tween:Pl
