@@ -1,0 +1,142 @@
+local WindUI = loadstring(game:HttpGet("https://github.com/Footagesus/WindUI/releases/latest/download/main.lua"))()
+
+local Window = WindUI:CreateWindow({
+        Title = "9K<font color='#00FF00'>0.1</font>",
+        Icon = "rbxassetid://1279310654146347060",
+        IconTransparency = 0.5,
+        IconThemed = true,
+        Author = "作者:9K",
+        Folder = "CloudHub",
+        Size = UDim2.fromOffset(400, 300),
+        Transparent = true,
+        Theme = "Light",
+        User = {
+            Enabled = true,
+            Callback = function() print("clicked") end,
+            Anonymous = false
+        },
+        SideBarWidth = 200,
+        ScrollBarEnabled = true,
+        Background = "rbxassetid://96291371536118"
+    })
+    
+
+Window:EditOpenButton({
+    Title = "9K脚本",
+    Icon = "monitor",
+    CornerRadius = UDim.new(0,16),
+    StrokeThickness = 4,
+    Color = ColorSequence.new({
+        ColorSequenceKeypoint.new(0, Color3.fromHex("FF0000")),
+        ColorSequenceKeypoint.new(0.16, Color3.fromHex("FF7F00")),
+        ColorSequenceKeypoint.new(0.33, Color3.fromHex("FFFF00")),
+        ColorSequenceKeypoint.new(0.5, Color3.fromHex("00FF00")),
+        ColorSequenceKeypoint.new(0.66, Color3.fromHex("0000FF")),
+        ColorSequenceKeypoint.new(0.83, Color3.fromHex("4B0082")),
+        ColorSequenceKeypoint.new(1, Color3.fromHex("9400D3"))
+    }),
+    Draggable = true,
+})
+            
+Window:Tag({
+    Title = "v0.1 9K",
+    Color = Color3.fromHex("#30ff6a")
+})
+
+Window:Tag({
+        Title = "9K", -- 标签汉化
+        Color = Color3.fromHex("#315dff")
+    })
+    local TimeTag = Window:Tag({
+        Title = "正在更新",
+        Color = Color3.fromHex("#000000")
+    })
+
+local Tabs = {
+    Main = Window:Section({ Title = "通用", Opened = true }),
+    gn = Window:Section({ Title = "功能", Opened = true }),    
+}
+
+local TabHandles = {
+    Q = Tabs.Main:Tab({ Title = "", Icon = "layout-grid" }),
+    W = Tabs.Main:Tab({ Title = "", Icon = "layout-grid" }),
+    E = Tabs.gn:Tab({ Title = "", Icon = "layout-grid" }),
+    R = Tabs.gn:Tab({ Title = "", Icon = "layout-grid" }),
+    T = Tabs.gn:Tab({ Title = "", Icon = "layout-grid" }),
+    Y = Tabs.gn:Tab({ Title = "", Icon = "layout-grid" }),
+    U = Tabs.gn:Tab({ Title = "", Icon = "layout-grid" }),    
+}
+Toggle = TabHandles.Q:Toggle({
+    Title = "",
+    Desc = "",
+    Locked = false,
+    Callback = function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/smalldesikon/vv/master/%E7%A5%9E%E5%A5%87.txt"))()
+ end
+})
+local Tabs = {
+    Main = Window:Section({ Title = "内脏与黑火药", Opened = true }),
+    gn = Window:Section({ Title = "鲨鱼脚本", Opened = true }),    
+}
+
+local TabHandles = {
+    Q = Tabs.Main:Tab({ Title = "", Icon = "layout-grid" }),
+    W = Tabs.Main:Tab({ Title = "", Icon = "layout-grid" }),
+    E = Tabs.gn:Tab({ Title = "", Icon = "layout-grid" }),
+    R = Tabs.gn:Tab({ Title = "", Icon = "layout-grid" }),
+    T = Tabs.gn:Tab({ Title = "", Icon = "layout-grid" }),
+    Y = Tabs.gn:Tab({ Title = "", Icon = "layout-grid" }),
+    U = Tabs.gn:Tab({ Title = "", Icon = "layout-grid" }),    
+}
+Toggle = TabHandles.Q:Toggle({
+    Title = "",
+    Desc = "",
+    Locked = false,
+    Callback = function()
+    loadstring(game:HttpGet("\104\116\116\112\115\58\47\47\112\97\115\116\101\102\121\46\97\112\112\47\65\51\78\113\122\52\78\112\47\114\97\119"))()
+ end
+})
+local Tabs = {
+    Main = Window:Section({ Title = "越HB", Opened = true }),
+    gn = Window:Section({ Title = "功能多", Opened = true }),    
+}
+
+local TabHandles = {
+    Q = Tabs.Main:Tab({ Title = "", Icon = "layout-grid" }),
+    W = Tabs.Main:Tab({ Title = "", Icon = "layout-grid" }),
+    E = Tabs.gn:Tab({ Title = "", Icon = "layout-grid" }),
+    R = Tabs.gn:Tab({ Title = "", Icon = "layout-grid" }),
+    T = Tabs.gn:Tab({ Title = "", Icon = "layout-grid" }),
+    Y = Tabs.gn:Tab({ Title = "", Icon = "layout-grid" }),
+    U = Tabs.gn:Tab({ Title = "", Icon = "layout-grid" }),    
+}
+Toggle = TabHandles.Q:Toggle({
+    Title = "",
+    Desc = "",
+    Locked = false,
+    Callback = function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/HB-ksdb/-4/main/obfuscated_script-1759031266212.lua.txt"))()
+ end
+})
+local Tabs = {
+    Main = Window:Section({ Title = "不知道", Opened = true }),
+    gn = Window:Section({ Title = "限免", Opened = true }),    
+}
+
+local TabHandles = {
+    Q = Tabs.Main:Tab({ Title = "", Icon = "layout-grid" }),
+    W = Tabs.Main:Tab({ Title = "", Icon = "layout-grid" }),
+    E = Tabs.gn:Tab({ Title = "", Icon = "layout-grid" }),
+    R = Tabs.gn:Tab({ Title = "", Icon = "layout-grid" }),
+    T = Tabs.gn:Tab({ Title = "", Icon = "layout-grid" }),
+    Y = Tabs.gn:Tab({ Title = "", Icon = "layout-grid" }),
+    U = Tabs.gn:Tab({ Title = "", Icon = "layout-grid" }),    
+}
+Toggle = TabHandles.Q:Toggle({
+    Title = "",
+    Desc = "",
+    Locked = false,
+    Callback = function()
+    loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/4fe692b3ee8d0d7d3fd268f658119280.lua"))()
+ end
+})
